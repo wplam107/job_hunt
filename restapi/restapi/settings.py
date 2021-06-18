@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 from configparser import ConfigParser
 
@@ -26,7 +27,7 @@ config.read('/Users/waynelam/Projects/job_hunt/restapi/restapi/backend.ini')
 USER = config.get('postgres', 'USER')
 PASSWORD = config.get('postgres', 'PASSWORD')
 DBNAME = config.get('postgres', 'DBNAME')
-SECRET_KEY = 'django-insecure-14$e9r6nfqp%w+)o0c!d4)5w)m@%@c^l8&21vm*of+e116sn+j'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

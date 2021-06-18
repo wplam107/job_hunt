@@ -130,6 +130,7 @@ dmypy.json
 
 # Private
 *.ini
+key.sh
 
 # VSCode
 .vscode
