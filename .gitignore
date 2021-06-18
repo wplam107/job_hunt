@@ -127,3 +127,18 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Private
+*.ini
+
+# VSCode
+.vscode
+
+# Environment
+env/
+
+# Temp ignore
+analysis/
+
+# Django migrations
+migrations/
