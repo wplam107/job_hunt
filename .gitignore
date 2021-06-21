@@ -143,3 +143,6 @@ analysis/
 
 # Django migrations
 migrations/
+
+# Node
+node_modules/

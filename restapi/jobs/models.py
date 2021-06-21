@@ -1,14 +1,27 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Job(models.Model):
+    class JobLevel(models.TextChoices):
+        NO_LEVEL = "N", _("No Level")
+        ENTRY = "E", _("Entry Level")
+        ASSOCIATE = "A", _("Associate")
+        MID_SENIOR = "M", _("Mid-Senior")
+        DIRECTOR = "D", _("Director")
+
+    class Response(models.TextChoices):
+        NO_RESPONSE = "N", _("No Response")
+        REJECTION = "R", _("Rejection")
+        FOLLOW_UP = "F", _("Follow Up")
+        INTERVIEW = "I", _("Interview")
+
     company = models.CharField(max_length=64, blank=False, default='')
     job_title = models.CharField(max_length=64, blank=False, default='')
-    job_level = models.CharField(max_length=64, blank=True)
+    job_level = models.TextField(max_length=64, choices=JobLevel.choices, default=JobLevel.NO_LEVEL)
     min_years = models.IntegerField(null=True, blank=True)
     date_posted = models.DateField()
     date_applied = models.DateField()
     cover_letter = models.TextField(max_length=2500, blank=True)
-    has_responded = models.BooleanField(default=False)
-    response = models.CharField(max_length=16, blank=True)
+    response = models.CharField(max_length=16, choices=Response.choices, default=Response.NO_RESPONSE)
     response_date = models.DateField(null=True, blank=True)
