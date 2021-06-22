@@ -138,9 +138,5 @@ key.sh
 # Environment
 env/
 
-# Temp ignore
-analysis/
-app/
-
 # Django migrations
 migrations/
