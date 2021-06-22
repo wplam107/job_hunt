@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Configure
 config = ConfigParser()
-config.read('/Users/waynelam/Projects/job_hunt/restapi/restapi/backend.ini')
+config.read('/Users/waynelam/Projects/job_hunt/job_hunt_api/restapi/restapi/backend.ini')
 
 USER = config.get('postgres', 'USER')
 PASSWORD = config.get('postgres', 'PASSWORD')
