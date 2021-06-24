@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 class Job(models.Model):
     class JobLevel(models.TextChoices):
         NO_LEVEL = "N", _("No Level")
+        INTERN = "I", _("Intern")
         ENTRY = "E", _("Entry Level")
         ASSOCIATE = "A", _("Associate")
         MID_SENIOR = "M", _("Mid-Senior")

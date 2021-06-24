@@ -140,3 +140,9 @@ env/
 
 # Django migrations
 migrations/
+
+# Database
+pgdata/
+
+# Docker Compose, contains private data
+docker-compose.yml

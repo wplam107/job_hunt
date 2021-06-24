@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-import os
+# import os
 from pathlib import Path
 from configparser import ConfigParser
 
@@ -21,18 +21,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # Configure
-config = ConfigParser()
-config.read('/Users/waynelam/Projects/job_hunt/job_hunt_api/restapi/restapi/backend.ini')
+config = ConfigParser(interpolation=None)
+config.read('/app/backend/restapi/backend.ini')
 
 USER = config.get('postgres', 'USER')
 PASSWORD = config.get('postgres', 'PASSWORD')
 DBNAME = config.get('postgres', 'DBNAME')
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = config.get('postgres', 'SECRET_KEY')
+# SECRET_KEY = os.environ['SECRET_KEY']
+# USER = os.environ['USER']
+# PASSWORD = os.environ['PASSWORD']
+# DBNAME = os.environ['DBNAME']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition
@@ -89,7 +93,7 @@ DATABASES = {
         'NAME': DBNAME,
         'USER': USER,
         'PASSWORD': PASSWORD,
-        'HOST': '127.0.0.1',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
@@ -142,4 +146,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8081',
+    'http://localhost',
+    'http://127.0.0.1'
 )

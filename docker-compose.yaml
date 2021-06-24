@@ -1,0 +1,28 @@
+version: "3.9"
+   
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB= #<DBNAME>
+      - POSTGRES_USER= #<USERNAME>
+      - POSTGRES_PASSWORD= #<PASSWORD>
+    ports:
+      - 5432:5432
+  web:
+    build: .
+    command: >
+      bash -c "python /app/backend/manage.py makemigrations jobs
+      && python /app/backend/manage.py migrate
+      && python /app/backend/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app/backend
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+volumes:
+    pgdata:
