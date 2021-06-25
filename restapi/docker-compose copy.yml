@@ -7,7 +7,7 @@ services:
       - ./pgdata:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB= #<DBNAME>
-      - POSTGRES_USER= #<USERNAME>
+      - POSTGRES_USER= #<USER>
       - POSTGRES_PASSWORD= #<PASSWORD>
     ports:
       - 5432:5432
@@ -18,7 +18,7 @@ services:
       && python /app/backend/manage.py migrate
       && python /app/backend/manage.py runserver 0.0.0.0:8000"
     volumes:
-      - .:/app/backend
+      - ./:/app/backend
     ports:
       - 8000:8000
     depends_on:

@@ -36,7 +36,7 @@ SECRET_KEY = config.get('postgres', 'SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '127.0.0.4']
 
 
 # Application definition
@@ -147,5 +147,6 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8081',
     'http://localhost',
-    'http://127.0.0.1'
+    'http://127.0.0.1',
+    'http://127.0.0.4'
 )
